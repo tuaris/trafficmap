@@ -6,7 +6,7 @@ CATEGORIES=	sysutils
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tuaris
-GH_TAGNAME=	0057577
+GH_TAGNAME=	3f1b64b
 
 MAINTAINER=	daniel@morante.net
 COMMENT=	Generates remap.config for Apache Traffic Server using DNS SRV records
@@ -18,6 +18,9 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 PLIST_FILES=	bin/trafficmap
 
 PORTDOCS=	README.md
+
+do-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>
 
