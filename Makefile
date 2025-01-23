@@ -1,18 +1,26 @@
 PROG=		trafficmap
 CFLAGS=	-O2
+SRCDIR=	src
+OBJDIR=	obj
+BINDIR=	bin
 
-${PROG}:
-	${CC} ${CFLAGS} -o ${PROG} ${PROG}.c
+${OBJDIR}/${PROG}.o:
+	@mkdir -p ${OBJDIR}
+	${CC} ${CFLAGS} -c -o ${OBJDIR}/${PROG}.o ${SRCDIR}/${PROG}.c
 
-all: ${PROG}
+${BINDIR}/${PROG}: ${OBJDIR}/${PROG}.o
+	${CC} -o ${BINDIR}/${PROG} ${OBJDIR}/${PROG}.o
 
-install: ${PROG}
-	install -s -m 755 ${PROG} /usr/local/bin
+all: ${BINDIR}/${PROG}
+
+install: ${BINDIR}/${PROG}
+	install -s -m 755 ${BINDIR}/${PROG} /usr/local/bin
 
 deinstall:
 	rm -f /usr/local/bin/${PROG}
 
 clean:
-	rm -f ${PROG}
+	rm -rf ${BINDIR}
+	rm -rf ${OBJDIR}
 
 .PHONY: all install deinstall clean
