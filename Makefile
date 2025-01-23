@@ -24,3 +24,4 @@ clean:
 	rm -rf ${OBJDIR}
 
 .PHONY: all install deinstall clean
+.MAIN: all
