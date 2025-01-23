@@ -22,8 +22,4 @@ install: ${BINDIR}/${PROG}
 deinstall:
 	@rm -f /usr/local/bin/${PROG}
 
-clean:
-	@rm -rf ${BINDIR} ${OBJDIR}
-
-.PHONY: all build install deinstall clean
 .MAIN: all
