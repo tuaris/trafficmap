@@ -1,0 +1,2 @@
+Command line tool to generate a remap.config file for Apache Traffic Server 
+using DNS SRV location records.
