@@ -57,27 +57,27 @@ int get_srv_record(const char *domain, char *port, char *target) {
 
     ns_msg msg;
     ns_initparse(answer, len, &msg);
-	int cnt = ns_msg_count(msg, ns_s_an);
+    int cnt = ns_msg_count(msg, ns_s_an);
     if (cnt < 1) {
         warnx("No SRV records found for %s", domain);
         return -1;
     }
 
     for (int i = 0; i < cnt; i++) {
-		ns_rr rr;
+        ns_rr rr;
         ns_parserr(&msg, ns_s_an, i, &rr);
         if (ns_rr_type(rr) == T_SRV) {
-			const unsigned char *rdata = ns_rr_rdata(rr);
+            const unsigned char *rdata = ns_rr_rdata(rr);
 
             u_int16_t port_num = ns_get16(rdata + 2 * NS_INT16SZ);
             sprintf(port, "%d", port_num);
 
-			len = dn_expand(ns_msg_base(msg), ns_msg_end(msg), rdata + 3 * NS_INT16SZ, target, NS_MAXDNAME);
-			//len = ns_name_uncompress(ns_msg_base(msg), ns_msg_end(msg), rdata + 3 * NS_INT16SZ, target, NS_MAXDNAME);
-			if (len == -1) {
-				warn("Unable to lookup target for %s", domain);
-				return -1;
-			}
+            len = dn_expand(ns_msg_base(msg), ns_msg_end(msg), rdata + 3 * NS_INT16SZ, target, NS_MAXDNAME);
+            //len = ns_name_uncompress(ns_msg_base(msg), ns_msg_end(msg), rdata + 3 * NS_INT16SZ, target, NS_MAXDNAME);
+            if (len == -1) {
+                warn("Unable to lookup target for %s", domain);
+                return -1;
+            }
 
             return 0;
         }
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
 
         // Get SRV record for domain
         char port[MAX_LINE_LENGTH];
-		char location[NS_MAXDNAME];
+        char location[NS_MAXDNAME];
         if (get_srv_record(full_domain, port, location) == -1) {
             continue;
         }
