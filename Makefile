@@ -12,7 +12,9 @@ ${BINDIR}/${PROG}: ${OBJDIR}/${PROG}.o
 	@mkdir -p ${BINDIR}
 	${CC} -o ${BINDIR}/${PROG} ${OBJDIR}/${PROG}.o
 
-all: ${BINDIR}/${PROG}
+build: ${BINDIR}/${PROG}
+
+all: build
 
 install: ${BINDIR}/${PROG}
 	install -s -m 755 ${BINDIR}/${PROG} /usr/local/bin
@@ -21,8 +23,7 @@ deinstall:
 	@rm -f /usr/local/bin/${PROG}
 
 clean:
-	@rm -rf ${BINDIR}
-	@rm -rf ${OBJDIR}
+	@rm -rf ${BINDIR} ${OBJDIR}
 
-.PHONY: all install deinstall clean
+.PHONY: all build install deinstall clean
 .MAIN: all
