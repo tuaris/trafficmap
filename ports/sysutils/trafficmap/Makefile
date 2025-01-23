@@ -1,12 +1,10 @@
 PORTNAME=	trafficmap
-#DISTVERSIONPREFIX=	v
-#DISTVERSION=	0.0.1
-DISTVERSION=	g20250122
+DISTVERSIONPREFIX=	v
+DISTVERSION=	0.0.1
 CATEGORIES=	sysutils
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tuaris
-GH_TAGNAME=	1e3d300
 
 MAINTAINER=	daniel@morante.net
 COMMENT=	Generates remap.config for Apache Traffic Server using DNS SRV records
