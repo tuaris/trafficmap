@@ -6,14 +6,14 @@ CATEGORIES=	sysutils
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tuaris
-GH_TAGNAME=	91b8207
+GH_TAGNAME=	0d1c7ad
 
 MAINTAINER=	daniel@morante.net
 COMMENT=	Generates remap.config for Apache Traffic Server using DNS SRV records
 WWW=		http://www.pacyworld.com
 
 LICENSE=	BSD2CLAUSE
-LICENSE_FILE=	LICENSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 PLIST_FILES=	bin/trafficmap
 
