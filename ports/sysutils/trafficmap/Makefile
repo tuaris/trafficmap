@@ -6,7 +6,7 @@ CATEGORIES=	sysutils
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tuaris
-GH_TAGNAME=	3f1b64b
+GH_TAGNAME=	1e3d300
 
 MAINTAINER=	daniel@morante.net
 COMMENT=	Generates remap.config for Apache Traffic Server using DNS SRV records
