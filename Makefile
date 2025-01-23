@@ -9,6 +9,7 @@ ${OBJDIR}/${PROG}.o:
 	${CC} ${CFLAGS} -c -o ${OBJDIR}/${PROG}.o ${SRCDIR}/${PROG}.c
 
 ${BINDIR}/${PROG}: ${OBJDIR}/${PROG}.o
+	@mkdir -p ${BINDIR}
 	${CC} -o ${BINDIR}/${PROG} ${OBJDIR}/${PROG}.o
 
 all: ${BINDIR}/${PROG}
@@ -17,11 +18,11 @@ install: ${BINDIR}/${PROG}
 	install -s -m 755 ${BINDIR}/${PROG} /usr/local/bin
 
 deinstall:
-	rm -f /usr/local/bin/${PROG}
+	@rm -f /usr/local/bin/${PROG}
 
 clean:
-	rm -rf ${BINDIR}
-	rm -rf ${OBJDIR}
+	@rm -rf ${BINDIR}
+	@rm -rf ${OBJDIR}
 
 .PHONY: all install deinstall clean
 .MAIN: all
