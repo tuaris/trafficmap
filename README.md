@@ -22,6 +22,6 @@ make install
 Of course you may just want to instead use the package
 
 ```
-cd port/sysutils/traffimap
+cd port/sysutils/trafficmap
 make package
 ```
